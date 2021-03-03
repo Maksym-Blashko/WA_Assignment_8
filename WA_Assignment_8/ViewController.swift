@@ -11,11 +11,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var blackView: UIView!
+    
     var counter = 0
+    var screenWidth = 0
+    var screenHeight = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         counterLabel.text = String(counter)
+        screenWidth = Int(self.view.frame.size.width) - 25
+        screenHeight = Int(self.view.frame.size.height) - 25
+
     }
 
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
@@ -29,10 +35,7 @@ class ViewController: UIViewController {
     }
     
     func randomPosition() -> CGPoint {
-        let screenWidth = Int(self.view.frame.size.width)
-        let screenHeight = Int(self.view.frame.size.height)
-        
-        let pos = CGPoint(x: Int.random(in: 0...screenWidth), y: Int.random(in: 0...screenHeight))
+        let pos = CGPoint(x: Int.random(in: 25...screenWidth), y: Int.random(in: 25...screenHeight))
 
         return pos
     }
